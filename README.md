@@ -14,7 +14,6 @@ A complete, professional web application for tracking expiry dates, renewals, su
 - **Reminder System**: Configurable reminders (30, 15, 7, 3, 1 days before expiry)
 - **Notifications**: In-app notifications with read/unread status
 - **Document Uploads**: Secure file uploads (PDF, JPG, PNG) with validation
-- **Analytics**: Beautiful charts and insights using Chart.js
 - **Settings**: Profile management, password change, notification preferences
 
 ## Technology Stack
@@ -167,8 +166,8 @@ LifeLeft/
 │   └── process.php            # Reminder processing script
 ├── notifications/
 │   └── index.php              # Notifications list
-├── analytics/
-│   └── index.php              # Analytics with charts
+|
+│                
 ├── settings/
 │   └── index.php              # User settings
 ├── api/
@@ -230,15 +229,6 @@ LifeLeft/
 3. Set the default reminder days for new records
 4. Save your settings
 
-### Viewing Analytics
-
-1. Navigate to "Analytics" in the sidebar
-2. View interactive charts:
-   - Records by category (doughnut chart)
-   - Status distribution (pie chart)
-   - Monthly expiry trends (line chart)
-   - Spending by category (bar chart)
-   - Monthly renewal expenses (line chart)
 
 ## Troubleshooting
 
