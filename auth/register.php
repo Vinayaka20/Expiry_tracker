@@ -89,7 +89,7 @@ $page_title = 'Register';
 <?php require_once BASE_PATH . '/includes/header.php'; ?>
 
 <div class="max-w-md mx-auto">
-    <div class="bg-white rounded-xl shadow-xl p-8">
+    <div class="auth-glass-card p-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-6">Create Account</h2>
         
         <?php if ($success): ?>
@@ -115,44 +115,44 @@ $page_title = 'Register';
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
                 <input type="text" name="full_name" value="<?php echo htmlspecialchars($full_name ?? ''); ?>" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    class="auth-input w-full px-4 py-2.5 border border-gray-300 rounded-xl bg-white/80"
                     required>
             </div>
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-medium mb-2">Email</label>
                 <input type="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    class="auth-input w-full px-4 py-2.5 border border-gray-300 rounded-xl bg-white/80"
                     required>
             </div>
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-medium mb-2">Phone (Optional)</label>
                 <input type="tel" name="phone" value="<?php echo htmlspecialchars($phone ?? ''); ?>" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                    class="auth-input w-full px-4 py-2.5 border border-gray-300 rounded-xl bg-white/80">
             </div>
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-medium mb-2">Password</label>
                 <input type="password" name="password" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    class="auth-input w-full px-4 py-2.5 border border-gray-300 rounded-xl bg-white/80"
                     required minlength="<?php echo PASSWORD_MIN_LENGTH; ?>">
             </div>
             
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-medium mb-2">Confirm Password</label>
                 <input type="password" name="confirm_password" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    class="auth-input w-full px-4 py-2.5 border border-gray-300 rounded-xl bg-white/80"
                     required>
             </div>
             
-            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            <button type="submit" class="btn-gradient w-full text-white py-3 rounded-xl font-medium">
                 Register
             </button>
         </form>
         
         <p class="text-center text-gray-600 mt-6">
-            Already have an account? <a href="<?php echo BASE_URL; ?>/auth/login.php" class="text-blue-600 hover:underline">Login here</a>
+            Already have an account? <a href="<?php echo BASE_URL; ?>/auth/login.php" class="text-teal-600 hover:text-teal-700 font-medium hover:underline">Login here</a>
         </p>
         <?php endif; ?>
     </div>

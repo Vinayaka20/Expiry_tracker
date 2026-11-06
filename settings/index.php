@@ -141,16 +141,10 @@ $csrf_token = generateCsrfToken();
 
 <div class="max-w-4xl mx-auto">
     <!-- Tabs -->
-    <div class="flex gap-4 mb-6 border-b">
-        <a href="?tab=profile" class="pb-4 px-4 font-medium <?php echo $active_tab == 'profile' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-gray-800'; ?>">
-            Profile
-        </a>
-        <a href="?tab=password" class="pb-4 px-4 font-medium <?php echo $active_tab == 'password' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-gray-800'; ?>">
-            Password
-        </a>
-        <a href="?tab=notifications" class="pb-4 px-4 font-medium <?php echo $active_tab == 'notifications' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-gray-800'; ?>">
-            Notifications
-        </a>
+    <div class="settings-tabs mb-6">
+        <a href="?tab=profile" class="settings-tab <?php echo $active_tab == 'profile' ? 'active' : ''; ?>">Profile</a>
+        <a href="?tab=password" class="settings-tab <?php echo $active_tab == 'password' ? 'active' : ''; ?>">Password</a>
+        <a href="?tab=notifications" class="settings-tab <?php echo $active_tab == 'notifications' ? 'active' : ''; ?>">Notifications</a>
     </div>
     
     <?php if (!empty($errors)): ?>
@@ -164,11 +158,11 @@ $csrf_token = generateCsrfToken();
     <?php endif; ?>
     
     <?php if ($active_tab == 'profile'): ?>
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Profile Information</h3>
+    <div class="section-card">
+        <div class="section-header">
+            <h3 class="section-title">Profile Information</h3>
         </div>
-        <div class="card-body">
+        <div class="section-body">
             <form method="POST" action="" data-validate>
                 <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                 <input type="hidden" name="action" value="profile">
@@ -198,28 +192,46 @@ $csrf_token = generateCsrfToken();
     </div>
     
     <?php elseif ($active_tab == 'password'): ?>
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Change Password</h3>
+    <div class="section-card">
+        <div class="section-header">
+            <h3 class="section-title">Change Password</h3>
         </div>
-        <div class="card-body">
+        <div class="section-body">
             <form method="POST" action="" data-validate>
                 <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                 <input type="hidden" name="action" value="password">
                 
                 <div class="form-group">
                     <label class="form-label">Current Password *</label>
-                    <input type="password" name="current_password" class="form-control" required>
+                    <div class="relative">
+                        <input type="password" name="current_password" class="form-control w-full pr-11" required>
+                        <button type="button" class="pw-toggle absolute right-3 top-1/2 -translate-y-1/2 text-theme-3 hover:text-theme transition-colors" tabindex="-1">
+                            <svg class="w-5 h-5 eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            <svg class="w-5 h-5 eye-closed hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path></svg>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label">New Password *</label>
-                    <input type="password" name="new_password" class="form-control" required minlength="<?php echo PASSWORD_MIN_LENGTH; ?>">
+                    <div class="relative">
+                        <input type="password" name="new_password" class="form-control w-full pr-11" required minlength="<?php echo PASSWORD_MIN_LENGTH; ?>">
+                        <button type="button" class="pw-toggle absolute right-3 top-1/2 -translate-y-1/2 text-theme-3 hover:text-theme transition-colors" tabindex="-1">
+                            <svg class="w-5 h-5 eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            <svg class="w-5 h-5 eye-closed hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path></svg>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label">Confirm New Password *</label>
-                    <input type="password" name="confirm_password" class="form-control" required>
+                    <div class="relative">
+                        <input type="password" name="confirm_password" class="form-control w-full pr-11" required>
+                        <button type="button" class="pw-toggle absolute right-3 top-1/2 -translate-y-1/2 text-theme-3 hover:text-theme transition-colors" tabindex="-1">
+                            <svg class="w-5 h-5 eye-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            <svg class="w-5 h-5 eye-closed hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path></svg>
+                        </button>
+                    </div>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Change Password</button>
@@ -228,25 +240,27 @@ $csrf_token = generateCsrfToken();
     </div>
     
     <?php elseif ($active_tab == 'notifications'): ?>
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Notification Settings</h3>
+    <div class="section-card">
+        <div class="section-header">
+            <h3 class="section-title">Notification Settings</h3>
         </div>
-        <div class="card-body">
+        <div class="section-body">
             <form method="POST" action="">
                 <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                 <input type="hidden" name="action" value="notifications">
                 
                 <div class="form-group">
-                    <label class="flex items-center">
-                        <input type="checkbox" name="email_notifications" 
-                            <?php echo ($settings['email_notifications'] ?? 1) ? 'checked' : ''; ?> 
-                            class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                        <span class="ml-2 text-gray-700">Enable Email Notifications</span>
+                    <label class="flex items-center justify-between p-4 rounded-xl cursor-pointer" style="border: 1px solid var(--border); background: var(--surface-2);">
+                        <span>
+                            <span class="block font-semibold text-theme">Enable Email Notifications</span>
+                            <span class="block text-xs text-theme-2 mt-0.5">Note: Email notifications require SMTP configuration (not yet implemented)</span>
+                        </span>
+                        <span class="toggle-switch ml-4">
+                            <input type="checkbox" name="email_notifications" 
+                                <?php echo ($settings['email_notifications'] ?? 1) ? 'checked' : ''; ?>>
+                            <span class="toggle-slider"></span>
+                        </span>
                     </label>
-                    <p class="text-xs text-gray-500 mt-1 ml-6">
-                        Note: Email notifications require SMTP configuration (not yet implemented)
-                    </p>
                 </div>
                 
                 <button type="submit" class="btn btn-primary mt-4">Save Settings</button>
@@ -255,5 +269,25 @@ $csrf_token = generateCsrfToken();
     </div>
     <?php endif; ?>
 </div>
+
+<script>
+// Password visibility toggles
+document.querySelectorAll('.pw-toggle').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const input = this.parentElement.querySelector('input');
+        const eyeOpen = this.querySelector('.eye-open');
+        const eyeClosed = this.querySelector('.eye-closed');
+        if (input.type === 'password') {
+            input.type = 'text';
+            eyeOpen.classList.add('hidden');
+            eyeClosed.classList.remove('hidden');
+        } else {
+            input.type = 'password';
+            eyeOpen.classList.remove('hidden');
+            eyeClosed.classList.add('hidden');
+        }
+    });
+});
+</script>
 
 <?php require_once BASE_PATH . '/includes/footer.php'; ?>

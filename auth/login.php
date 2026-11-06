@@ -76,7 +76,7 @@ $page_title = 'Login';
 <?php require_once BASE_PATH . '/includes/header.php'; ?>
 
 <div class="max-w-md mx-auto">
-    <div class="bg-white rounded-xl shadow-xl p-8">
+    <div class="auth-glass-card p-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-6">Welcome Back</h2>
         
         <?php if (!empty($errors)): ?>
@@ -95,29 +95,29 @@ $page_title = 'Login';
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-medium mb-2">Email</label>
                 <input type="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    class="auth-input w-full px-4 py-2.5 border border-gray-300 rounded-xl bg-white/80"
                     required autofocus>
             </div>
             
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-medium mb-2">Password</label>
                 <input type="password" name="password" 
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    class="auth-input w-full px-4 py-2.5 border border-gray-300 rounded-xl bg-white/80"
                     required>
             </div>
             
             <div class="mb-6 flex items-center">
-                <input type="checkbox" name="remember" id="remember" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                <input type="checkbox" name="remember" id="remember" class="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
                 <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
             </div>
             
-            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            <button type="submit" class="btn-gradient w-full text-white py-3 rounded-xl font-medium">
                 Login
             </button>
         </form>
         
         <p class="text-center text-gray-600 mt-6">
-            Don't have an account? <a href="<?php echo BASE_URL; ?>/auth/register.php" class="text-blue-600 hover:underline">Register here</a>
+            Don't have an account? <a href="<?php echo BASE_URL; ?>/auth/register.php" class="text-teal-600 hover:text-teal-700 font-medium hover:underline">Register here</a>
         </p>
     </div>
 </div>

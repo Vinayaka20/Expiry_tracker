@@ -67,42 +67,42 @@ try {
 
 <!-- Summary Cards -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-    <div class="card">
-        <div class="flex items-center justify-between">
+    <div class="stat-card accent-blue">
+        <div class="flex items-start justify-between">
             <div>
-                <p class="text-gray-500 text-sm">Total Renewals</p>
-                <p class="text-2xl font-bold text-gray-800 mt-1"><?php echo $stats['total_renewals']; ?></p>
+                <p class="stat-label">Total Renewals</p>
+                <p class="stat-value mt-1"><?php echo $stats['total_renewals']; ?></p>
             </div>
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="stat-icon">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                 </svg>
             </div>
         </div>
     </div>
-    
-    <div class="card">
-        <div class="flex items-center justify-between">
+
+    <div class="stat-card accent-green">
+        <div class="flex items-start justify-between">
             <div>
-                <p class="text-gray-500 text-sm">Total Spent</p>
-                <p class="text-2xl font-bold text-green-600 mt-1"><?php echo $stats['total_spent'] ? formatAmount($stats['total_spent']) : '₹0.00'; ?></p>
+                <p class="stat-label">Total Spent</p>
+                <p class="stat-value mt-1"><?php echo $stats['total_spent'] ? formatAmount($stats['total_spent']) : '₹0.00'; ?></p>
             </div>
-            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="stat-icon">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
             </div>
         </div>
     </div>
-    
-    <div class="card">
-        <div class="flex items-center justify-between">
+
+    <div class="stat-card accent-purple">
+        <div class="flex items-start justify-between">
             <div>
-                <p class="text-gray-500 text-sm">Average Amount</p>
-                <p class="text-2xl font-bold text-purple-600 mt-1"><?php echo $stats['avg_amount'] ? formatAmount($stats['avg_amount']) : '₹0.00'; ?></p>
+                <p class="stat-label">Average Amount</p>
+                <p class="stat-value mt-1"><?php echo $stats['avg_amount'] ? formatAmount($stats['avg_amount']) : '₹0.00'; ?></p>
             </div>
-            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="stat-icon">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                 </svg>
             </div>
@@ -111,14 +111,20 @@ try {
 </div>
 
 <!-- Renewal History -->
-<div class="card mb-8">
-    <div class="card-header">
-        <h3 class="card-title">Renewal History</h3>
+<div class="section-card mb-8">
+    <div class="section-header">
+        <h3 class="section-title">Renewal History</h3>
+        <span class="text-xs font-semibold text-theme-3 uppercase tracking-wide"><?php echo count($renewals); ?> records</span>
     </div>
-    <div class="card-body">
+    <div class="section-body !p-0">
         <?php if (empty($renewals)): ?>
         <div class="empty-state">
-            <p class="empty-state-text">No renewals yet</p>
+            <div class="empty-state-icon">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+            </div>
+            <p class="text-theme-2">No renewals yet — renewed records will appear here.</p>
         </div>
         <?php else: ?>
         <div class="table-container">
@@ -138,7 +144,7 @@ try {
                     <tr>
                         <td>
                             <a href="<?php echo BASE_URL; ?>/records/view.php?id=<?php echo $renewal['record_id']; ?>" 
-                                class="font-medium text-blue-600 hover:underline">
+                                class="font-semibold text-teal-600 dark:text-teal-400 hover:underline">
                                 <?php echo htmlspecialchars($renewal['record_title']); ?>
                             </a>
                         </td>
@@ -163,16 +169,23 @@ try {
 
 <!-- Monthly Trends -->
 <?php if (!empty($monthly_trends)): ?>
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Monthly Renewal Trends (Last 12 Months)</h3>
+<div class="section-card">
+    <div class="section-header">
+        <h3 class="section-title">Monthly Renewal Trends</h3>
+        <span class="text-xs font-semibold text-theme-3 uppercase tracking-wide">Last 12 months</span>
     </div>
-    <div class="card-body">
-        <div class="h-64">
+    <div class="section-body">
+        <div class="h-72">
             <canvas id="renewalChart"></canvas>
         </div>
         <script>
+            const isDarkR = document.documentElement.classList.contains('dark');
+            const rText = isDarkR ? '#94A3B8' : '#64748B';
+            const rGrid = isDarkR ? 'rgba(148,163,184,0.12)' : 'rgba(148,163,184,0.18)';
             const ctx = document.getElementById('renewalChart').getContext('2d');
+            const rGradient = ctx.createLinearGradient(0, 0, 0, 280);
+            rGradient.addColorStop(0, 'rgba(37, 99, 235, 0.35)');
+            rGradient.addColorStop(1, 'rgba(13, 148, 136, 0.02)');
             new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -180,8 +193,14 @@ try {
                     datasets: [{
                         label: 'Renewal Amount (₹)',
                         data: <?php echo json_encode(array_column($monthly_trends, 'total')); ?>,
-                        borderColor: 'rgba(37, 99, 235, 1)',
-                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderColor: '#2563EB',
+                        backgroundColor: rGradient,
+                        borderWidth: 2.5,
+                        pointBackgroundColor: '#0D9488',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
                         fill: true,
                         tension: 0.4
                     }]
@@ -189,9 +208,18 @@ try {
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: { color: rText },
+                            grid: { color: rGrid }
+                        },
+                        x: {
+                            ticks: { color: rText },
+                            grid: { display: false }
                         }
                     }
                 }

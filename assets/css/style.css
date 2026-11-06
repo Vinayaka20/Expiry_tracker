@@ -54,12 +54,15 @@ a:hover {
 }
 
 .btn-primary {
-    background-color: #2563eb;
+    background: linear-gradient(135deg, #0d9488, #059669);
     color: white;
+    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
 }
 
 .btn-primary:hover {
-    background-color: #1d4ed8;
+    background: linear-gradient(135deg, #0f766e, #047857);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(13, 148, 136, 0.45);
 }
 
 .btn-secondary {
@@ -598,3 +601,1035 @@ a:hover {
     white-space: nowrap;
     border-width: 0;
 }
+
+/* ============================================================
+   Modern Glassmorphism Design System
+   ============================================================ */
+
+/* Glass Sidebar — premium navy */
+.glass-sidebar {
+    background: linear-gradient(180deg, #0d1526 0%, #111B31 55%, #0e1830 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-right: 1px solid rgba(94, 234, 212, 0.12);
+    box-shadow: 4px 0 32px rgba(2, 8, 23, 0.45);
+}
+
+/* Active nav link */
+.nav-link {
+    position: relative;
+}
+
+.nav-link:hover {
+    transform: translateX(4px);
+}
+
+.nav-link-active {
+    background: linear-gradient(90deg, rgba(13, 148, 136, 0.95), rgba(37, 99, 235, 0.95)) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 18px rgba(13, 148, 136, 0.45), 0 0 20px rgba(37, 99, 235, 0.25);
+}
+
+.nav-link-active::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 24px;
+    border-radius: 0 4px 4px 0;
+    background: linear-gradient(180deg, #5eead4, #6ee7b7);
+}
+
+/* Glass Topbar */
+.glass-topbar {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(20, 184, 166, 0.15);
+    box-shadow: 0 4px 24px rgba(20, 184, 166, 0.1);
+}
+
+.dark .glass-topbar {
+    background: rgba(15, 23, 42, 0.65);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Glass Modal */
+.glass-modal {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+}
+
+.dark .glass-modal {
+    background: rgba(30, 41, 59, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Glass Cards — auto-upgrade Tailwind card patterns used across pages */
+main .bg-white.rounded-lg.shadow,
+main .bg-white.rounded-xl.shadow,
+main .bg-white.dark\:bg-slate-800.rounded-lg.shadow {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(20, 184, 166, 0.18);
+    box-shadow: 0 8px 32px rgba(20, 184, 166, 0.12), 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dark main .bg-white.dark\:bg-slate-800.rounded-lg.shadow,
+.dark main .bg-white.dark\:bg-slate-800.rounded-xl.shadow {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+main .bg-white.rounded-lg.shadow:hover,
+main .bg-white.rounded-xl.shadow:hover,
+main .bg-white.dark\:bg-slate-800.rounded-lg.shadow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(20, 184, 166, 0.14), 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Inner panels inside cards get subtle glass tint */
+main .bg-gray-50.dark\:bg-slate-700.rounded-lg {
+    background: rgba(241, 245, 249, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark main .bg-gray-50.dark\:bg-slate-700.rounded-lg {
+    background: rgba(51, 65, 85, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Card section dividers */
+main .border-gray-200.dark\:border-slate-700 {
+    border-color: rgba(148, 163, 184, 0.25);
+}
+
+.dark main .border-gray-200.dark\:border-slate-700 {
+    border-color: rgba(148, 163, 184, 0.15);
+}
+
+/* Glass inputs */
+main input[type="text"],
+main input[type="email"],
+main input[type="password"],
+main input[type="date"],
+main input[type="number"],
+main select,
+main textarea {
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+main input:focus,
+main select:focus,
+main textarea:focus {
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+    outline: none;
+}
+
+/* Toast glass style */
+.toast {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollbar — modern thin style */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #5eead4, #6ee7b7);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2dd4bf, #34d399);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #475569, #64748b);
+}
+
+/* Selection color */
+::selection {
+    background: rgba(20, 184, 166, 0.25);
+}
+
+/* Smooth page feel */
+body {
+    background-attachment: fixed;
+}
+
+/* Focus ring for keyboard nav */
+*:focus-visible {
+    outline: 2px solid #14b8a6;
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   Cohesive Teal Accent Remap
+   Overrides legacy blue utilities inside the app so every page
+   matches the teal/emerald theme without editing each file.
+   ============================================================ */
+main .bg-blue-600,
+main button.bg-blue-600,
+main a.bg-blue-600 {
+    background: linear-gradient(135deg, #0d9488, #059669);
+}
+
+main .hover\:bg-blue-700:hover,
+main .bg-blue-600:hover {
+    background: linear-gradient(135deg, #0f766e, #047857) !important;
+}
+
+main .bg-blue-700 {
+    background-color: #0f766e;
+}
+
+main .text-blue-600,
+main .text-blue-700 {
+    color: #0d9488;
+}
+
+main .hover\:text-blue-800:hover {
+    color: #0f766e;
+}
+
+main .bg-blue-100 {
+    background-color: #ccfbf1;
+}
+
+main .text-blue-800 {
+    color: #115e59;
+}
+
+.dark main .text-blue-400,
+.dark main .dark\:text-blue-400 {
+    color: #2dd4bf;
+}
+
+.dark main .bg-blue-900,
+.dark main .dark\:bg-blue-900 {
+    background-color: rgba(19, 78, 74, 0.5);
+}
+
+main .focus\:ring-blue-500:focus {
+    --tw-ring-color: rgba(20, 184, 166, 0.5);
+}
+
+/* Primary buttons get gradient + lift */
+main a.bg-blue-600,
+main button.bg-blue-600 {
+    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+main a.bg-blue-600:hover,
+main button.bg-blue-600:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(13, 148, 136, 0.45);
+}
+
+/* ============================================================
+   Table Polish
+   ============================================================ */
+main table thead th {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.dark main table thead th {
+    color: #94a3b8;
+}
+
+main table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+main table tbody tr:hover {
+    background-color: rgba(240, 253, 250, 0.7);
+}
+
+.dark main table tbody tr:hover {
+    background-color: rgba(51, 65, 85, 0.4);
+}
+
+/* Pagination buttons */
+main .bg-gray-200.dark\:bg-slate-700.rounded {
+    border-radius: 0.625rem;
+    transition: all 0.2s ease;
+}
+
+main .bg-gray-200.dark\:bg-slate-700.rounded:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.dark main .bg-gray-200.dark\:bg-slate-700.rounded:hover {
+    background-color: #475569;
+}
+
+/* ============================================================
+   Auth Pages — glass card on dark gradient
+   ============================================================ */
+.auth-glass-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 1.25rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(94, 234, 212, 0.15);
+}
+
+.auth-input {
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-input:focus {
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+    outline: none;
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #0d9488, #059669);
+    box-shadow: 0 6px 18px rgba(13, 148, 136, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #0f766e, #047857);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(13, 148, 136, 0.5);
+}
+
+/* ============================================================
+   Page Entrance Animation
+   ============================================================ */
+main .p-8 > * {
+    animation: fadeUp 0.45s ease both;
+}
+
+main .p-8 > *:nth-child(2) { animation-delay: 0.05s; }
+main .p-8 > *:nth-child(3) { animation-delay: 0.1s; }
+main .p-8 > *:nth-child(4) { animation-delay: 0.15s; }
+main .p-8 > *:nth-child(5) { animation-delay: 0.2s; }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    main .p-8 > * {
+        animation: none;
+    }
+}
+
+/* ============================================================
+   DESIGN SYSTEM v2 — CSS Variables Theme
+   ============================================================ */
+:root {
+    --bg: #F4F7FC;
+    --bg-gradient: radial-gradient(1200px 600px at 85% -10%, rgba(13,148,136,.08), transparent 60%),
+                   radial-gradient(900px 500px at -10% 110%, rgba(37,99,235,.07), transparent 60%),
+                   #F4F7FC;
+    --surface: #FFFFFF;
+    --surface-2: #F8FAFD;
+    --surface-3: #EEF2F8;
+    --border: #E2E8F0;
+    --text: #172033;
+    --text-2: #64748B;
+    --text-3: #94A3B8;
+    --primary: #0D9488;
+    --primary-strong: #0F766E;
+    --secondary: #2563EB;
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --danger: #E11D48;
+    --sidebar-bg: #111B31;
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(226, 232, 240, 0.8);
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.07);
+    --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.10);
+    --radius: 14px;
+    --radius-sm: 10px;
+    --radius-lg: 20px;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dark {
+    --bg: #080F1E;
+    --bg-gradient: radial-gradient(1200px 600px at 85% -10%, rgba(45,212,191,.07), transparent 60%),
+                   radial-gradient(900px 500px at -10% 110%, rgba(96,165,250,.06), transparent 60%),
+                   #080F1E;
+    --surface: #111C30;
+    --surface-2: #17243B;
+    --surface-3: #1E2C47;
+    --border: #26364F;
+    --text: #F1F5F9;
+    --text-2: #94A3B8;
+    --text-3: #64748B;
+    --primary: #2DD4BF;
+    --primary-strong: #14B8A6;
+    --secondary: #60A5FA;
+    --success: #4ADE80;
+    --warning: #FBBF24;
+    --danger: #FB7185;
+    --glass-bg: rgba(17, 28, 48, 0.72);
+    --glass-border: rgba(38, 54, 79, 0.8);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Base */
+body {
+    font-family: var(--font);
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border);
+}
+
+.card-title {
+    color: var(--text);
+}
+
+/* Auto-themed Tailwind cards */
+main .bg-white.rounded-lg.shadow,
+main .bg-white.rounded-xl.shadow,
+main .bg-white.dark\:bg-slate-800.rounded-lg.shadow,
+main .bg-white.dark\:bg-slate-800.rounded-xl.shadow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+main .bg-white.rounded-lg.shadow:hover,
+main .bg-white.rounded-xl.shadow:hover,
+main .bg-white.dark\:bg-slate-800.rounded-lg.shadow:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(13, 148, 136, 0.25);
+}
+
+.dark main .bg-white.dark\:bg-slate-800.rounded-lg.shadow,
+.dark main .bg-white.dark\:bg-slate-800.rounded-xl.shadow {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+/* Inner panels */
+main .bg-gray-50.dark\:bg-slate-700.rounded-lg {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+}
+
+.dark main .bg-gray-50.dark\:bg-slate-700.rounded-lg {
+    background: var(--surface-2);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(13, 148, 136, 0.35);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-strong), #1D4ED8);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(13, 148, 136, 0.45);
+    color: #fff;
+}
+
+/* ---------- Forms ---------- */
+.form-control,
+main input[type="text"],
+main input[type="email"],
+main input[type="password"],
+main input[type="date"],
+main input[type="number"],
+main input[type="tel"],
+main input[type="search"],
+main select,
+main textarea {
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus,
+main input:focus,
+main select:focus,
+main textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+    outline: none;
+}
+
+.form-label {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ---------- Tables ---------- */
+.table th {
+    color: var(--text-2);
+    border-bottom: 1px solid var(--border);
+}
+
+.table td {
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+.table tbody tr:hover {
+    background: var(--surface-2);
+}
+
+/* ---------- Badges ---------- */
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* ---------- Alerts ---------- */
+.alert {
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
+/* ---------- Empty state ---------- */
+.empty-state {
+    padding: 3.5rem 1rem;
+}
+
+.empty-state-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(13,148,136,.12), rgba(37,99,235,.12));
+    color: var(--primary);
+    font-size: 1.75rem;
+}
+
+/* ============================================================
+   Stat Cards (Dashboard / Renewals)
+   ============================================================ */
+.stat-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--accent, var(--primary));
+    opacity: 0.9;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent, var(--primary)) 0%, transparent 70%);
+    opacity: 0.12;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in srgb, var(--accent, var(--primary)) 35%, var(--border));
+}
+
+.stat-card:hover::after {
+    opacity: 0.22;
+    transform: scale(1.15);
+}
+
+.stat-card .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent, var(--primary)), color-mix(in srgb, var(--accent, var(--primary)) 55%, #000));
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--accent, var(--primary)) 40%, transparent);
+    flex-shrink: 0;
+}
+
+.stat-card .stat-value {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.15;
+}
+
+.stat-card .stat-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-2);
+}
+
+.accent-teal   { --accent: #0D9488; }
+.accent-blue   { --accent: #2563EB; }
+.accent-green  { --accent: #16A34A; }
+.accent-amber  { --accent: #F59E0B; }
+.accent-rose   { --accent: #E11D48; }
+.accent-purple { --accent: #7C3AED; }
+
+.dark .accent-teal   { --accent: #2DD4BF; }
+.dark .accent-blue   { --accent: #60A5FA; }
+.dark .accent-green  { --accent: #4ADE80; }
+.dark .accent-amber  { --accent: #FBBF24; }
+.dark .accent-rose   { --accent: #FB7185; }
+.dark .accent-purple { --accent: #A78BFA; }
+
+/* ============================================================
+   Section Cards with header accent
+   ============================================================ */
+.section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.section-card .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(90deg, var(--surface-2), transparent);
+}
+
+.section-card .section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
+
+.section-card .section-body {
+    padding: 1.5rem;
+}
+
+/* List rows inside cards */
+.list-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.list-row:hover {
+    border-color: var(--border);
+    background: var(--surface-3);
+    transform: translateX(3px);
+}
+
+/* ============================================================
+   Toggle Switch (Reminders / Settings)
+   ============================================================ */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    transition: all 0.25s ease;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    top: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-color: transparent;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(20px);
+}
+
+/* ============================================================
+   Settings Tabs
+   ============================================================ */
+.settings-tabs {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.35rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    width: fit-content;
+}
+
+.settings-tab {
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-2);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.settings-tab:hover {
+    color: var(--text);
+}
+
+.settings-tab.active {
+    background: var(--surface);
+    color: var(--primary-strong);
+    box-shadow: var(--shadow-sm);
+}
+
+.dark .settings-tab.active {
+    color: var(--primary);
+}
+
+/* ============================================================
+   Calendar
+   ============================================================ */
+.cal-day {
+    min-height: 7.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem;
+    background: var(--surface);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cal-day:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.cal-day.today {
+    border-color: var(--primary);
+    background: linear-gradient(160deg, rgba(13,148,136,.08), rgba(37,99,235,.06));
+    box-shadow: 0 0 0 1px var(--primary), var(--shadow-sm);
+}
+
+.cal-day-num {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+}
+
+.cal-day.today .cal-day-num {
+    color: var(--primary-strong);
+}
+
+.dark .cal-day.today .cal-day-num {
+    color: var(--primary);
+}
+
+.cal-event {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: 3px solid;
+    transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.cal-event:hover {
+    filter: brightness(1.1);
+    transform: translateX(2px);
+}
+
+/* ============================================================
+   Notifications
+   ============================================================ */
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: all 0.2s ease;
+}
+
+.notif-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.notif-item.unread {
+    border-left: 4px solid var(--primary);
+    background: linear-gradient(90deg, rgba(13,148,136,.06), var(--surface) 40%);
+}
+
+.dark .notif-item.unread {
+    background: linear-gradient(90deg, rgba(45,212,191,.08), var(--surface) 40%);
+}
+
+.notif-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+}
+
+/* ============================================================
+   Icon Buttons (table actions)
+   ============================================================ */
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.icon-btn:hover {
+    transform: translateY(-1px);
+}
+
+.icon-btn.view {
+    background: var(--surface-2);
+    color: var(--text-2);
+    border-color: var(--border);
+}
+
+.icon-btn.view:hover {
+    background: var(--surface-3);
+    color: var(--text);
+}
+
+.icon-btn.edit {
+    background: rgba(13, 148, 136, 0.12);
+    color: var(--primary-strong);
+}
+
+.dark .icon-btn.edit {
+    color: var(--primary);
+}
+
+.icon-btn.edit:hover {
+    background: rgba(13, 148, 136, 0.22);
+}
+
+.icon-btn.delete {
+    background: rgba(225, 29, 72, 0.1);
+    color: var(--danger);
+}
+
+.icon-btn.delete:hover {
+    background: rgba(225, 29, 72, 0.2);
+}
+
+/* ============================================================
+   Sidebar collapse + mobile drawer
+   ============================================================ */
+#sidebar {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s ease;
+}
+
+.sidebar-collapsed #sidebar {
+    width: 5rem;
+}
+
+.sidebar-collapsed #sidebar .nav-text,
+.sidebar-collapsed #sidebar .nav-section-label,
+.sidebar-collapsed #sidebar .brand-text,
+.sidebar-collapsed #sidebar .user-meta,
+.sidebar-collapsed #sidebar .logout-text {
+    display: none;
+}
+
+.sidebar-collapsed #sidebar .nav-link {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar-collapsed #sidebar .nav-link-active::before {
+    left: -12px;
+}
+
+@media (min-width: 1024px) {
+    .sidebar-collapsed #sidebar {
+        width: 5rem;
+    }
+
+    .sidebar-collapsed main {
+        margin-left: 5rem !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    #sidebar {
+        transform: none !important;
+    }
+}
+
+#sidebar-overlay {
+    transition: opacity 0.3s ease;
+}
+
+/* Topbar glass uses theme vars */
+.glass-topbar {
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Scrollbar themed */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #5eead4, #93c5fd);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2dd4bf, #60a5fa);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #2dd4bf, #3b82f6);
+}
+
+/* Selection */
+::selection {
+    background: rgba(13, 148, 136, 0.25);
+}
+
+/* Text color helpers mapped to theme */
+.text-theme       { color: var(--text); }
+.text-theme-2     { color: var(--text-2); }
+.text-theme-3     { color: var(--text-3); }
+.bg-theme         { background: var(--surface); }
+.bg-theme-2       { background: var(--surface-2); }
+.border-theme     { border-color: var(--border); }
+
+/* Chart tooltip / canvas inherits fine; ensure card bodies have room */
+section-card canvas { max-width: 100%; }
+

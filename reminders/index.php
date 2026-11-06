@@ -63,83 +63,70 @@ $csrf_token = generateCsrfToken();
 <?php require_once BASE_PATH . '/includes/header.php'; ?>
 
 <div class="max-w-2xl mx-auto">
-    <div class="bg-white dark:bg-slate-800 rounded-lg shadow p-6 mb-6">
-        <div class="p-6 border-b border-gray-200 dark:border-slate-700 -mx-6 -mt-6 mb-6">
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Reminder Preferences</h3>
+    <div class="section-card mb-6">
+        <div class="section-header">
+            <h3 class="section-title">Reminder Preferences</h3>
         </div>
+        <div class="section-body">
             <form method="POST" action="">
                 <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                 
-                <div class="">
-                    <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">Default Reminder Days</label>
+                <div class="mb-6">
+                    <label class="form-label">Default Reminder Days</label>
                     <input type="number" name="default_reminder_days" 
                         value="<?php echo htmlspecialchars($settings['default_reminder_days'] ?? 7); ?>" 
-                        class="w-full px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white" min="1" max="365">
-                    <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">Default number of days before expiry to send reminders</p>
+                        class="form-control w-full sm:w-40" min="1" max="365">
+                    <p class="text-xs text-theme-2 mt-1.5">Default number of days before expiry to send reminders</p>
                 </div>
                 
-                <div class="border-t border-gray-200 dark:border-slate-700 pt-6 mt-6">
-                    <h4 class="font-medium text-gray-800 dark:text-white mb-4">Automatic Reminders</h4>
-                    <p class="text-sm text-gray-500 dark:text-slate-400 mb-4">Select which automatic reminders you want to receive:</p>
+                <div class="border-t border-theme pt-6">
+                    <h4 class="font-bold text-theme mb-1">Automatic Reminders</h4>
+                    <p class="text-sm text-theme-2 mb-5">Choose which reminders you want to receive before an item expires:</p>
                     
                     <div class="space-y-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" name="reminder_30_days" 
-                                <?php echo ($settings['reminder_30_days'] ?? 1) ? 'checked' : ''; ?> 
-                                class="w-4 h-4 text-blue-600 border-gray-300 dark:border-slate-600 rounded focus:ring-blue-500 dark:bg-slate-700">
-                            <span class="ml-2 text-gray-700 dark:text-slate-300">30 days before expiry</span>
+                        <?php
+                        $reminder_options = [
+                            'reminder_30_days' => ['30 days before expiry', 'reminder_30_days'],
+                            'reminder_15_days' => ['15 days before expiry', 'reminder_15_days'],
+                            'reminder_7_days'  => ['7 days before expiry',  'reminder_7_days'],
+                            'reminder_3_days'  => ['3 days before expiry',  'reminder_3_days'],
+                            'reminder_1_day'   => ['1 day before expiry',   'reminder_1_day'],
+                        ];
+                        foreach ($reminder_options as $name => $opt):
+                            $checked = ($settings[$name] ?? 1) ? 'checked' : '';
+                        ?>
+                        <label class="flex items-center justify-between p-3.5 rounded-xl cursor-pointer transition-all hover:bg-theme-2" style="border: 1px solid var(--border);">
+                            <span class="text-theme font-medium"><?php echo $opt[0]; ?></span>
+                            <span class="toggle-switch">
+                                <input type="checkbox" name="<?php echo $name; ?>" <?php echo $checked; ?>>
+                                <span class="toggle-slider"></span>
+                            </span>
                         </label>
-                        
-                        <label class="flex items-center">
-                            <input type="checkbox" name="reminder_15_days" 
-                                <?php echo ($settings['reminder_15_days'] ?? 1) ? 'checked' : ''; ?> 
-                                class="w-4 h-4 text-blue-600 border-gray-300 dark:border-slate-600 rounded focus:ring-blue-500 dark:bg-slate-700">
-                            <span class="ml-2 text-gray-700 dark:text-slate-300">15 days before expiry</span>
-                        </label>
-                        
-                        <label class="flex items-center">
-                            <input type="checkbox" name="reminder_7_days" 
-                                <?php echo ($settings['reminder_7_days'] ?? 1) ? 'checked' : ''; ?> 
-                                class="w-4 h-4 text-blue-600 border-gray-300 dark:border-slate-600 rounded focus:ring-blue-500 dark:bg-slate-700">
-                            <span class="ml-2 text-gray-700 dark:text-slate-300">7 days before expiry</span>
-                        </label>
-                        
-                        <label class="flex items-center">
-                            <input type="checkbox" name="reminder_3_days" 
-                                <?php echo ($settings['reminder_3_days'] ?? 1) ? 'checked' : ''; ?> 
-                                class="w-4 h-4 text-blue-600 border-gray-300 dark:border-slate-600 rounded focus:ring-blue-500 dark:bg-slate-700">
-                            <span class="ml-2 text-gray-700 dark:text-slate-300">3 days before expiry</span>
-                        </label>
-                        
-                        <label class="flex items-center">
-                            <input type="checkbox" name="reminder_1_day" 
-                                <?php echo ($settings['reminder_1_day'] ?? 1) ? 'checked' : ''; ?> 
-                                class="w-4 h-4 text-blue-600 border-gray-300 dark:border-slate-600 rounded focus:ring-blue-500 dark:bg-slate-700">
-                            <span class="ml-2 text-gray-700 dark:text-slate-300">1 day before expiry</span>
-                        </label>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 
-                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors mt-6">Save Settings</button>
+                <button type="submit" class="btn btn-primary px-6 py-2.5 rounded-xl mt-6">Save Settings</button>
             </form>
+        </div>
     </div>
     
     <!-- Reminder Processing Info -->
-    <div class="bg-white dark:bg-slate-800 rounded-lg shadow">
-        <div class="p-6 border-b border-gray-200 dark:border-slate-700">
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Reminder Processing</h3>
+    <div class="section-card">
+        <div class="section-header">
+            <h3 class="section-title">Reminder Processing</h3>
         </div>
-        <div class="p-6">
-            <p class="text-gray-600 dark:text-slate-300 mb-4">
+        <div class="section-body">
+            <p class="text-theme-2 mb-4">
                 Reminders are processed automatically. To enable automatic reminder processing on Windows:
             </p>
-            <ol class="list-decimal list-inside text-gray-600 dark:text-slate-300 space-y-2">
+            <ol class="list-decimal list-inside text-theme-2 space-y-2">
                 <li>Open Windows Task Scheduler</li>
                 <li>Create a new task to run PHP</li>
                 <li>Set the trigger to run daily</li>
-                <li>Set the action to run: <code class="bg-gray-100 dark:bg-slate-700 px-2 py-1 rounded text-gray-800 dark:text-slate-200">php "<?php echo BASE_PATH; ?>/reminders/process.php"</code></li>
+                <li>Set the action to run: <code class="bg-theme-2 px-2 py-1 rounded-lg text-theme text-xs font-mono">php "<?php echo BASE_PATH; ?>/reminders/process.php"</code></li>
             </ol>
-            <p class="text-sm text-gray-500 dark:text-slate-400 mt-4">
+            <p class="text-sm text-theme-3 mt-4">
                 Note: Email notifications require SMTP configuration in Settings.
             </p>
         </div>

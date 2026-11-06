@@ -77,10 +77,11 @@ $month_names = [
 <?php require_once BASE_PATH . '/includes/header.php'; ?>
 
 <!-- Calendar Navigation -->
-<div class="bg-white dark:bg-slate-800 rounded-lg shadow p-6 mb-6">
+<div class="section-card mb-6">
+    <div class="section-body !py-4">
         <div class="flex items-center justify-between">
             <a href="?month=<?php echo $prev_month; ?>&year=<?php echo $prev_year; ?>" 
-                class="bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors flex items-center gap-2">
+                class="icon-btn view !w-auto !h-auto px-4 py-2 flex items-center gap-2 text-sm font-semibold">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -88,15 +89,15 @@ $month_names = [
             </a>
             
             <div class="text-center">
-                <h2 class="text-2xl font-bold text-gray-800 dark:text-white">
+                <h2 class="text-xl font-extrabold text-theme tracking-tight">
                     <?php echo $month_names[$month]; ?> <?php echo $year; ?>
                 </h2>
                 <a href="?month=<?php echo date('n'); ?>&year=<?php echo date('Y'); ?>" 
-                    class="text-blue-600 dark:text-blue-400 hover:underline text-sm">Today</a>
+                    class="text-teal-600 dark:text-teal-400 hover:underline text-sm font-semibold">Today</a>
             </div>
             
             <a href="?month=<?php echo $next_month; ?>&year=<?php echo $next_year; ?>" 
-                class="bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors flex items-center gap-2">
+                class="icon-btn view !w-auto !h-auto px-4 py-2 flex items-center gap-2 text-sm font-semibold">
                 Next
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -104,45 +105,46 @@ $month_names = [
             </a>
         </div>
     </div>
+</div>
 
 <!-- Calendar Grid -->
-<div class="bg-white dark:bg-slate-800 rounded-lg shadow p-6 mb-6">
+<div class="section-card mb-6">
+    <div class="section-body">
         <!-- Day Headers -->
-        <div class="grid grid-cols-7 gap-2 mb-4">
-            <div class="text-center font-semibold text-gray-600 dark:text-slate-400 py-2">Mon</div>
-            <div class="text-center font-semibold text-gray-600 dark:text-slate-400 py-2">Tue</div>
-            <div class="text-center font-semibold text-gray-600 dark:text-slate-400 py-2">Wed</div>
-            <div class="text-center font-semibold text-gray-600 dark:text-slate-400 py-2">Thu</div>
-            <div class="text-center font-semibold text-gray-600 dark:text-slate-400 py-2">Fri</div>
-            <div class="text-center font-semibold text-gray-600 dark:text-slate-400 py-2">Sat</div>
-            <div class="text-center font-semibold text-gray-600 dark:text-slate-400 py-2">Sun</div>
+        <div class="grid grid-cols-7 gap-2 mb-3">
+            <div class="text-center text-xs font-bold uppercase tracking-wider text-theme-3 py-2">Mon</div>
+            <div class="text-center text-xs font-bold uppercase tracking-wider text-theme-3 py-2">Tue</div>
+            <div class="text-center text-xs font-bold uppercase tracking-wider text-theme-3 py-2">Wed</div>
+            <div class="text-center text-xs font-bold uppercase tracking-wider text-theme-3 py-2">Thu</div>
+            <div class="text-center text-xs font-bold uppercase tracking-wider text-theme-3 py-2">Fri</div>
+            <div class="text-center text-xs font-bold uppercase tracking-wider text-theme-3 py-2">Sat</div>
+            <div class="text-center text-xs font-bold uppercase tracking-wider text-theme-3 py-2">Sun</div>
         </div>
-        
+
         <!-- Calendar Days -->
         <div class="grid grid-cols-7 gap-2">
             <?php
             // Empty cells before first day
             for ($i = 1; $i < $first_day_weekday; $i++):
             ?>
-            <div class="h-32 bg-gray-50 dark:bg-slate-700 rounded-lg"></div>
+            <div class="cal-day !bg-transparent !border-transparent"></div>
             <?php endfor; ?>
-            
+
             <!-- Days of month -->
             <?php for ($day = 1; $day <= $days_in_month; $day++):
                 $is_today = ($day == date('j') && $month == date('n') && $year == date('Y'));
                 $day_events = $events_by_day[$day] ?? [];
             ?>
-            <div class="h-32 border border-gray-200 dark:border-slate-700 rounded-lg p-2 <?php echo $is_today ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700' : 'bg-white dark:bg-slate-800'; ?> hover:shadow-md transition-shadow">
-                <div class="font-semibold <?php echo $is_today ? 'text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-slate-300'; ?> mb-2">
-                    <?php echo $day; ?>
-                </div>
-                
+            <div class="cal-day <?php echo $is_today ? 'today' : ''; ?>">
+                <div class="cal-day-num"><?php echo $day; ?></div>
+
                 <?php if (!empty($day_events)): ?>
-                <div class="space-y-1 overflow-y-auto max-h-24">
+                <div class="flex-1 overflow-y-auto space-y-1 max-h-28">
                     <?php foreach ($day_events as $event): ?>
-                    <a href="<?php echo BASE_URL; ?>/records/view.php?id=<?php echo $event['id']; ?>" 
-                        class="block text-xs p-1 rounded truncate hover:opacity-80"
-                        style="background-color: <?php echo $event['category_color']; ?>20; color: <?php echo $event['category_color']; ?>; border-left: 3px solid <?php echo $event['category_color']; ?>;">
+                    <a href="<?php echo BASE_URL; ?>/records/view.php?id=<?php echo $event['id']; ?>"
+                        class="cal-event"
+                        style="background-color: <?php echo $event['category_color']; ?>22; color: <?php echo $event['category_color']; ?>; border-left-color: <?php echo $event['category_color']; ?>;"
+                        title="<?php echo htmlspecialchars($event['title']); ?>">
                         <?php echo htmlspecialchars($event['title']); ?>
                     </a>
                     <?php endforeach; ?>
@@ -150,7 +152,7 @@ $month_names = [
                 <?php endif; ?>
             </div>
             <?php endfor; ?>
-            
+
             <!-- Empty cells after last day -->
             <?php
             $total_cells = $first_day_weekday + $days_in_month;
@@ -158,28 +160,29 @@ $month_names = [
             if ($remaining_cells < 7):
                 for ($i = 0; $i < $remaining_cells; $i++):
             ?>
-            <div class="h-32 bg-gray-50 dark:bg-slate-700 rounded-lg"></div>
-            <?php 
+            <div class="cal-day !bg-transparent !border-transparent"></div>
+            <?php
                 endfor;
             endif;
             ?>
         </div>
     </div>
+</div>
 
 <!-- Legend -->
-<div class="bg-white dark:bg-slate-800 rounded-lg shadow">
-    <div class="p-6 border-b border-gray-200 dark:border-slate-700">
-        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Category Legend</h3>
+<div class="section-card">
+    <div class="section-header">
+        <h3 class="section-title">Category Legend</h3>
     </div>
-    <div class="p-6">
-        <div class="flex flex-wrap gap-4">
+    <div class="section-body">
+        <div class="flex flex-wrap gap-3">
             <?php 
             $categories = getCategories();
             foreach ($categories as $cat):
             ?>
-            <div class="flex items-center gap-2">
-                <div class="w-4 h-4 rounded" style="background-color: <?php echo $cat['color']; ?>"></div>
-                <span class="text-sm text-gray-600 dark:text-slate-400"><?php echo htmlspecialchars($cat['name']); ?></span>
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium" style="background: var(--surface-2); border: 1px solid var(--border); color: var(--text-2);">
+                <div class="w-3 h-3 rounded-full shadow-sm" style="background-color: <?php echo $cat['color']; ?>"></div>
+                <?php echo htmlspecialchars($cat['name']); ?>
             </div>
             <?php endforeach; ?>
         </div>

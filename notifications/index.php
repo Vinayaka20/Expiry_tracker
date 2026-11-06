@@ -49,47 +49,55 @@ try {
 <?php require_once BASE_PATH . '/includes/header.php'; ?>
 
 <div class="max-w-4xl mx-auto">
-    <div class="bg-white dark:bg-slate-800 rounded-lg shadow">
-        <div class="p-6 border-b border-gray-200 dark:border-slate-700 flex items-center justify-between">
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Notifications</h3>
+    <div class="section-card">
+        <div class="section-header">
+            <h3 class="section-title">Notifications</h3>
             <?php if (!empty($notifications)): ?>
-            <a href="?mark_all_read=1" class="bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded text-sm hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors">Mark All as Read</a>
+            <a href="?mark_all_read=1" class="text-sm font-semibold text-teal-600 dark:text-teal-400 hover:underline">Mark All as Read</a>
             <?php endif; ?>
         </div>
-        <div class="p-6">
+        <div class="section-body">
             <?php if (empty($notifications)): ?>
-            <div class="text-center py-8">
-                <p class="text-gray-500 dark:text-slate-400">No notifications</p>
+            <div class="empty-state">
+                <div class="empty-state-icon">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                </div>
+                <p class="text-theme-2">You're all caught up — no notifications.</p>
             </div>
             <?php else: ?>
-            <div class="space-y-4">
+            <div class="space-y-3">
                 <?php foreach ($notifications as $notification): ?>
-                <div class="p-4 rounded-lg <?php echo $notification['is_read'] ? 'bg-gray-50 dark:bg-slate-700' : 'bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500'; ?>">
-                    <div class="flex items-start justify-between">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-xs font-medium px-2 py-1 rounded <?php echo $notification['is_read'] ? 'bg-gray-200 dark:bg-slate-600 text-gray-600 dark:text-slate-300' : 'bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200'; ?>">
-                                    <?php echo ucfirst($notification['type']); ?>
-                                </span>
-                                <span class="text-xs text-gray-500 dark:text-slate-400">
-                                    <?php echo formatDate($notification['created_at'], DATETIME_FORMAT_DISPLAY); ?>
-                                </span>
-                            </div>
-                            <h4 class="font-medium text-gray-800 dark:text-white mb-1"><?php echo htmlspecialchars($notification['title']); ?></h4>
-                            <p class="text-gray-600 dark:text-slate-300 text-sm"><?php echo htmlspecialchars($notification['message']); ?></p>
-                            
-                            <?php if ($notification['record_id']): ?>
-                            <a href="<?php echo BASE_URL; ?>/records/view.php?id=<?php echo $notification['record_id']; ?>" 
-                                class="text-sm text-blue-600 dark:text-blue-400 hover:underline mt-2 inline-block">
-                                View Record →
-                            </a>
+                <div class="notif-item <?php echo $notification['is_read'] ? '' : 'unread'; ?>">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                            <span class="notif-badge <?php echo $notification['is_read'] ? 'bg-theme-2 text-theme-2' : 'bg-teal-100 text-teal-700 dark:bg-teal-500/20 dark:text-teal-300'; ?>">
+                                <?php echo ucfirst($notification['type']); ?>
+                            </span>
+                            <span class="text-xs text-theme-3 font-medium">
+                                <?php echo formatDate($notification['created_at'], DATETIME_FORMAT_DISPLAY); ?>
+                            </span>
+                            <?php if (!$notification['is_read']): ?>
+                            <span class="w-2 h-2 rounded-full bg-teal-500"></span>
                             <?php endif; ?>
                         </div>
+                        <h4 class="font-bold text-theme mb-1"><?php echo htmlspecialchars($notification['title']); ?></h4>
+                        <p class="text-theme-2 text-sm"><?php echo htmlspecialchars($notification['message']); ?></p>
                         
+                        <?php if ($notification['record_id']): ?>
+                        <a href="<?php echo BASE_URL; ?>/records/view.php?id=<?php echo $notification['record_id']; ?>" 
+                            class="text-sm font-semibold text-teal-600 dark:text-teal-400 hover:underline mt-2 inline-block">
+                            View Record →
+                        </a>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <div class="flex-shrink-0">
                         <?php if (!$notification['is_read']): ?>
-                        <form method="POST" action="<?php echo BASE_URL; ?>/api/mark-notification-read.php" class="ml-4">
+                        <form method="POST" action="<?php echo BASE_URL; ?>/api/mark-notification-read.php">
                             <input type="hidden" name="id" value="<?php echo $notification['id']; ?>">
-                            <button type="submit" class="bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-slate-300 px-3 py-1 rounded text-sm hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors" data-mark-read="<?php echo $notification['id']; ?>">
+                            <button type="submit" class="icon-btn view !w-auto !h-auto px-3 py-1.5 text-xs font-semibold" data-mark-read="<?php echo $notification['id']; ?>">
                                 Mark Read
                             </button>
                         </form>
