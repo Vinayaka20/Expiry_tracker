@@ -14,7 +14,6 @@ A complete, professional web application for tracking expiry dates, renewals, su
 - **Reminder System**: Configurable reminders (30, 15, 7, 3, 1 days before expiry)
 - **Notifications**: In-app notifications with read/unread status
 - **Document Uploads**: Secure file uploads (PDF, JPG, PNG) with validation
-- **Analytics**: Beautiful charts and insights using Chart.js
 - **Settings**: Profile management, password change, notification preferences
 
 ## Technology Stack
@@ -37,7 +36,7 @@ A complete, professional web application for tracking expiry dates, renewals, su
 
 1. **Place the Application**
    - Copy the entire `LifeLeft` folder to `C:\xampp\htdocs\`
-   - The application should be accessible at `http://localhost/LifeLeft/`
+   - The application should be accessible at `http://localhost/expiry_tracker/`
 
 2. **Create the Database**
    - Open phpMyAdmin: http://localhost/phpmyadmin
@@ -60,7 +59,7 @@ A complete, professional web application for tracking expiry dates, renewals, su
    - Open `config/app.php`
    - Update the BASE_URL if your application is not at `/LifeLeft/`:
      ```php
-     define('BASE_URL', 'http://localhost/LifeLeft');
+     define('BASE_URL', 'http://localhost/expiry_tracker');
      ```
 
 5. **Set File Permissions**
@@ -68,7 +67,7 @@ A complete, professional web application for tracking expiry dates, renewals, su
    - On Windows XAMPP, this is usually already configured
 
 6. **Access the Application**
-   - Open your browser and navigate to: http://localhost/LifeLeft/
+   - Open your browser and navigate to: http://localhost/expiry_tracker/
    - You will be redirected to the login page
    - Click "Register here" to create your first account
 
@@ -111,8 +110,8 @@ To enable automatic reminder processing on Windows:
 5. Set the time (e.g., 9:00 AM) and click Next
 6. Choose **Start a program** and click Next
 7. Program/script: `php`
-8. Add arguments: `"C:\xampp\htdocs\LifeLeft\reminders\process.php"`
-9. Start in: `C:\xampp\htdocs\LifeLeft\reminders\`
+8. Add arguments: `"C:\xampp\htdocs\expiry_tracker\reminders\process.php"`
+9. Start in: `C:\xampp\htdocs\expiry_tracker\reminders\`
 10. Click Finish
 
 The reminder script will now run daily and create notifications for upcoming expirations.
@@ -130,7 +129,7 @@ The reminder script will now run daily and create notifications for upcoming exp
 ## File Structure
 
 ```
-LifeLeft/
+expiry_tracker/
 ├── assets/
 │   ├── css/
 │   │   └── style.css          # Main stylesheet
@@ -167,8 +166,8 @@ LifeLeft/
 │   └── process.php            # Reminder processing script
 ├── notifications/
 │   └── index.php              # Notifications list
-├── analytics/
-│   └── index.php              # Analytics with charts
+|
+│                
 ├── settings/
 │   └── index.php              # User settings
 ├── api/
@@ -230,15 +229,6 @@ LifeLeft/
 3. Set the default reminder days for new records
 4. Save your settings
 
-### Viewing Analytics
-
-1. Navigate to "Analytics" in the sidebar
-2. View interactive charts:
-   - Records by category (doughnut chart)
-   - Status distribution (pie chart)
-   - Monthly expiry trends (line chart)
-   - Spending by category (bar chart)
-   - Monthly renewal expenses (line chart)
 
 ## Troubleshooting
 
